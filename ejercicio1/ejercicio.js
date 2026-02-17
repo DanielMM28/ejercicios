@@ -10,15 +10,21 @@ document.getElementById("formulario").addEventListener("submit", function(e) {
 
     let edadPension = sexo === "mujer" ? 57 : 62;
     let añosFaltantes = edadPension - edadActual;
+  let diff = hoy - fechaInicio;
+    let semanasCotizadas = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
 
+    // SEMANAS QUE FALTAN
+    const SEMANAS_REQUERIDAS = 1300;
+    let semanasFaltantes = SEMANAS_REQUERIDAS - semanasCotizadas;
     let mensaje = "";
 
     if (añosFaltantes > 0) {
-        mensaje = `a ${nombre}, de ${edadActual} años le faltan ${añosFaltantes} años para pensionarse.`;
+        mensaje = `a ${nombre}, de ${edadActual} años le faltan ${añosFaltantes} años y ${semanasFaltantes} semanas cotizadas para pensionarse.`;
     } else {
         mensaje = `${nombre}, ya puedes pensionarte 🎉`;
     }
 
     document.getElementById("resultado").innerText = mensaje;
 });
+
 
