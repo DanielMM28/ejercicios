@@ -8,12 +8,6 @@ document.getElementById("formulario").addEventListener("submit", function(e) {
     const hoy = new Date();
     let edadActual = hoy.getFullYear() - fechaNacimiento.getFullYear();
 
-    // Ajuste si aún no ha cumplido años este año
-    const mes = hoy.getMonth() - fechaNacimiento.getMonth();
-    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
-        edadActual--;
-    }
-
     let edadPension = sexo === "mujer" ? 57 : 62;
     let añosFaltantes = edadPension - edadActual;
 
@@ -27,3 +21,4 @@ document.getElementById("formulario").addEventListener("submit", function(e) {
 
     document.getElementById("resultado").innerText = mensaje;
 });
+
